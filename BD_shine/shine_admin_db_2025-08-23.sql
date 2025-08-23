@@ -7,7 +7,7 @@
 # 
 # Host: 127.0.0.1 (Ubuntu 24.10 11.4.5)
 # Database: shine_admin_db
-# Generation time: 2025-08-23T17:31:02+01:00
+# Generation time: 2025-08-23T17:46:55+01:00
 # ************************************************************
 
 
@@ -175,17 +175,9 @@ CREATE TABLE `languages` (
   `slug` varchar(50) NOT NULL,
   `code` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
-LOCK TABLES `languages` WRITE;
-/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
 
-INSERT INTO `languages` (`id`, `name`, `slug`, `code`) VALUES
-	(1, "FRANCAIS", "FR", "FR001"),
-	(2, "ANGLAIS", "EN", "EN002");
-
-/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 
@@ -196,10 +188,12 @@ DROP TABLE IF EXISTS `language_translations`;
 
 CREATE TABLE `language_translations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lang_id` int(11) NOT NULL,
+  `lang_id` int(11) DEFAULT NULL,
   `lang_key` varchar(100) NOT NULL,
   `lang_value` text DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `INDEX_5NNG` (`lang_id`),
+  CONSTRAINT `FK_F9M1` FOREIGN KEY (`lang_id`) REFERENCES `language_translations` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
@@ -499,10 +493,12 @@ CREATE TABLE `utilisateur` (
   `site` int(11) DEFAULT NULL,
   `societe` int(11) NOT NULL,
   `groupe` int(11) DEFAULT NULL,
+  `langue` int(10) DEFAULT NULL,
   PRIMARY KEY (`u_id`),
   KEY `u_societe` (`societe`),
   KEY `u_site` (`site`),
   KEY `INDEX_TKUM` (`groupe`),
+  KEY `INDEX_5X8E` (`langue`),
   CONSTRAINT `FK_F41U` FOREIGN KEY (`groupe`) REFERENCES `groups` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
   CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`societe`) REFERENCES `societe` (`s_id`) ON DELETE CASCADE,
   CONSTRAINT `utilisateur_ibfk_2` FOREIGN KEY (`site`) REFERENCES `site` (`pv_id`) ON DELETE SET NULL
@@ -544,4 +540,4 @@ CREATE TABLE `zone_distribution` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-# Dump completed on 2025-08-23T17:31:02+01:00
+# Dump completed on 2025-08-23T17:46:55+01:00
