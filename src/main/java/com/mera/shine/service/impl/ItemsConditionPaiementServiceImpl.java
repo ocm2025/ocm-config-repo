@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Transactional
-public class ItemsConditionPaiementServiceImpl {
+public class ItemsConditionPaiementServiceImpl implements ItemsConditionPaiementService {
 
     private final ItemsConditionPaiementRepository itemsConditionPaiementRepository;
     private final ItemsConditionPaiementMapper itemsConditionPaiementMapper;
@@ -31,6 +31,7 @@ public class ItemsConditionPaiementServiceImpl {
         this.itemsConditionPaiementMapper = itemsConditionPaiementMapper;
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<ItemsConditionPaiementDto> findAll() {
         return itemsConditionPaiementRepository.findAll().stream()
@@ -39,12 +40,14 @@ public class ItemsConditionPaiementServiceImpl {
     }
 
 
+    @Override
     @Transactional(readOnly = true)
     public Optional<ItemsConditionPaiementDto> findById(Integer id) {
         return itemsConditionPaiementRepository.findById(id)
                 .map(itemsConditionPaiementMapper::toDto);
     }
 
+    @Override
     @Transactional
     public ItemsConditionPaiementDto create(CreateItemsConditionPaiementRequestDto createItemsConditionPaiementDto) {
         ItemsConditionPaiement itemsConditionPaiement = itemsConditionPaiementMapper.createDtoToEntity(createItemsConditionPaiementDto);
@@ -52,6 +55,7 @@ public class ItemsConditionPaiementServiceImpl {
         return itemsConditionPaiementMapper.toDto(itemsConditionPaiement);
     }
 
+    @Override
     @Transactional
     public ItemsConditionPaiementDto update(Integer id, ItemsConditionPaiementDto itemsConditionPaiementDto) {
         return itemsConditionPaiementRepository.findById(id)
@@ -63,6 +67,7 @@ public class ItemsConditionPaiementServiceImpl {
                 .orElseThrow(() -> new RuntimeException("ItemsConditionPaiement not found with id: " + id));
     }
 
+    @Override
     @Transactional
     public void delete(Integer id) {
         itemsConditionPaiementRepository.deleteById(id);
