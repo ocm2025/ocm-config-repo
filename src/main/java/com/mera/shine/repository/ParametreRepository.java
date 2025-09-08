@@ -13,4 +13,7 @@ import java.util.Optional;
 @Repository
 public interface ParametreRepository extends JpaRepository<Parametre, Integer> {
 
+    List<Parametre> findBySiteId(Integer siteId);
+
+    List<Parametre> findBysocieteId(Integer societeId);
 }

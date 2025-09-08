@@ -46,6 +46,15 @@ public  class GroupsRoleServiceImpl implements GroupsRoleService {
                 .map(groupsRoleMapper::toDto);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<GroupsRoleDto> findByIdGroup(Integer idGroup) {
+        return groupsRoleRepository.findByIdGroup(idGroup).stream()
+                .map(groupsRoleMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+
 
     @Override
     @Transactional

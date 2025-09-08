@@ -49,6 +49,18 @@ public class ModePaiementController {
     }
 
     /**
+     * GET /api/mode-paiements/by-societe/{societeId} : Get payment methods by société ID.
+     *
+     * @param societeId the société ID
+     * @return the ResponseEntity with status 200 (OK) and the list of payment methods in body
+     */
+    @GetMapping("/by-societe/{societeId}")
+    public ResponseEntity<List<ModePaiementDto>> getModePaiementsBySocieteId(@PathVariable Integer societeId) {
+        List<ModePaiementDto> modePaiements = modePaiementService.findBySocieteId(societeId);
+        return ResponseEntity.ok(modePaiements);
+    }
+
+    /**
      * POST /api/mode-paiements : Create a new payment method.
      *
      * @param createModePaiementDto the payment method to create

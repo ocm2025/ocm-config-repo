@@ -12,4 +12,6 @@ import java.util.List;
 @Repository
 public interface ModePaiementRepository extends JpaRepository<ModePaiement, Integer> {
 
+    List<ModePaiement> findBySocieteId(Integer societeId);
+
 }

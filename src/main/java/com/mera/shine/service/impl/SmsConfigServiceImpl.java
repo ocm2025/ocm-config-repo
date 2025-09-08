@@ -43,6 +43,13 @@ public class SmsConfigServiceImpl implements SmsConfigService {
                 .map(smsConfigMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
+    public List<SmsConfigDto> findBySocieteId(Integer societeId) {
+        return smsConfigRepository.findBySocieteId(societeId).stream()
+                .map(smsConfigMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public SmsConfigDto create(CreateSmsConfigRequestDto createSmsConfigDto) {
         SmsConfig smsConfig = smsConfigMapper.createDtoToEntity(createSmsConfigDto);

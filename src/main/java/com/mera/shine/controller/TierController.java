@@ -49,6 +49,36 @@ public class TierController {
     }
 
     /**
+     * GET /api/tiers/search : Get tiers by client type and société ID.
+     *
+     * @param clType the client type
+     * @param societeId the société ID
+     * @return the ResponseEntity with status 200 (OK) and the list of tiers in body
+     */
+    @GetMapping("/search-by-societe/{clType}/{societeId}")
+    public ResponseEntity<List<TierDto>> getTiersByClTypeAndSocieteId(
+            @PathVariable Integer clType,
+            @PathVariable Integer societeId) {
+        List<TierDto> tiers = tierService.findByClTypeAndSocieteId(clType, societeId);
+        return ResponseEntity.ok(tiers);
+    }
+
+    /**
+     * GET /api/tiers/search-by-site : Get tiers by client type and site ID.
+     *
+     * @param clType the client type
+     * @param siteId the site ID
+     * @return the ResponseEntity with status 200 (OK) and the list of tiers in body
+     */
+    @GetMapping("/search-by-site/{clType}/{siteId}")
+    public ResponseEntity<List<TierDto>> getTiersByClTypeAndSiteId(
+            @PathVariable Integer clType,
+            @PathVariable Integer siteId) {
+        List<TierDto> tiers = tierService.findByClTypeAndSiteId(clType, siteId);
+        return ResponseEntity.ok(tiers);
+    }
+
+    /**
      * POST /api/tiers : Create a new tier.
      *
      * @param createTierDto the tier to create

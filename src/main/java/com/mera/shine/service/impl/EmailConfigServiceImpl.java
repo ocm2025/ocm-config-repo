@@ -43,6 +43,12 @@ public class EmailConfigServiceImpl implements EmailConfigService {
                 .map(emailConfigMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
+    public EmailConfigDto findBySocieteId(Integer societeId) {
+        EmailConfig emailConfig = emailConfigRepository.findBySocieteId(societeId);
+        return emailConfig != null ? emailConfigMapper.toDto(emailConfig) : null;
+    }
+
     @Transactional
     public EmailConfigDto create(CreateEmailConfigRequestDto createEmailConfigDto) {
         EmailConfig emailConfig = emailConfigMapper.createDtoToEntity(createEmailConfigDto);

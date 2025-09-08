@@ -35,6 +35,20 @@ public class GroupsRoleController {
         return ResponseEntity.ok(groupsRoles);
     }
 
+    /**
+     * GET /api/groups-roles/{id} : Get the "id" group role.
+     *
+     * @param id the id of the group role to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the group role, or with status 404 (Not Found)
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<GroupsRoleDto> getGroupsRole(@PathVariable Integer id) {
+        return groupsRoleService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
 
 
     /**

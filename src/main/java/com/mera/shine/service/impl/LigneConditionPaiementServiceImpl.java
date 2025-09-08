@@ -47,6 +47,14 @@ public class LigneConditionPaiementServiceImpl implements LigneConditionPaiement
                 .map(ligneConditionPaiementMapper::toDto);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<LigneConditionPaiementDto> findBySocieteId(Integer societeId) {
+        return ligneConditionPaiementRepository.findBySocieteId(societeId).stream()
+                .map(ligneConditionPaiementMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     @Transactional

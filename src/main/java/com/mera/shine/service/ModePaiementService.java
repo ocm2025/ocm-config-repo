@@ -10,7 +10,7 @@ import java.util.Optional;
  * Service interface for managing ModePaiement entities.
  */
 public interface ModePaiementService {
-    
+
     /**
      * Get all payment methods.
      *
@@ -25,7 +25,16 @@ public interface ModePaiementService {
      * @return the payment method if found
      */
     Optional<ModePaiementDto> findById(Integer id);
-    
+
+    /**
+     * Find payment methods by société ID.
+     *
+     * @param societeId the société ID
+     * @return list of payment methods belonging to the société
+     */
+    List<ModePaiementDto> findBySocieteId(Integer societeId);
+
+
     /**
      * Create a new payment method.
      *
@@ -33,7 +42,7 @@ public interface ModePaiementService {
      * @return the created payment method
      */
     ModePaiementDto create(CreateModePaiementRequestDto createModePaiementDto);
-    
+
     /**
      * Update an existing payment method.
      *
@@ -42,7 +51,7 @@ public interface ModePaiementService {
      * @return the updated payment method
      */
     ModePaiementDto update(Integer id, ModePaiementDto modePaiementDto);
-    
+
     /**
      * Delete a payment method by its ID.
      *

@@ -13,4 +13,5 @@ import java.util.Optional;
 @Repository
 public interface ZoneDistributionRepository extends JpaRepository<ZoneDistribution, Integer> {
 
+    List<ZoneDistribution> findBySiteId(Integer siteId);
 }

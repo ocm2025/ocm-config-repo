@@ -35,6 +35,12 @@ public class SiteController {
         return ResponseEntity.ok(sites);
     }
 
+    @GetMapping("/search-by-societe/{societeId}")
+    public ResponseEntity<List<SiteDto>> getAllSitesBySocieteId(@PathVariable Integer societeId) {
+        List<SiteDto> sites = siteService.findBySociete(societeId);
+        return ResponseEntity.ok(sites);
+    }
+
     /**
      * GET /api/sites/{id} : Get the "id" site.
      *

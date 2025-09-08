@@ -50,6 +50,18 @@ public class AdresseController {
     }
 
     /**
+     * GET /api/adresses/by-tiers/{tiersId} : Get addresses by tiers ID.
+     *
+     * @param tiersId the tiers ID
+     * @return the ResponseEntity with status 200 (OK) and the list of addresses in body
+     */
+    @GetMapping("/by-tiers/{tiersId}")
+    public ResponseEntity<List<AdresseDto>> getAdressesByTiersId(@PathVariable Integer tiersId) {
+        List<AdresseDto> adresses = adresseService.findByTiersId(tiersId);
+        return ResponseEntity.ok(adresses);
+    }
+
+    /**
      * POST /api/adresses : Create a new address.
      *
      * @param createAdresseDto the address to create

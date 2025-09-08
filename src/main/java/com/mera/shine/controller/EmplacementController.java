@@ -49,6 +49,18 @@ public class EmplacementController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/bysociete/{societeId}")
+    public ResponseEntity<List<EmplacementDto>> getEmplacementBySociete(@PathVariable Integer societeId) {
+        List<EmplacementDto> emplacementDtos = emplacementService.findBySocieteId(societeId);
+         return ResponseEntity.ok(emplacementDtos);
+    }
+
+    @GetMapping("/bysite/{siteId}")
+    public ResponseEntity<List<EmplacementDto>> getEmplacementBySite(@PathVariable Integer siteId) {
+        List<EmplacementDto> emplacementDtos = emplacementService.findBySocieteId(siteId);
+        return ResponseEntity.ok(emplacementDtos);
+    }
+
 
     /**
      * POST /api/emplacements : Create a new emplacement.

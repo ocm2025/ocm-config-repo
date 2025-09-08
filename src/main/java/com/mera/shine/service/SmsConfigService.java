@@ -10,14 +10,14 @@ import java.util.Optional;
  * Service interface for managing SmsConfig entities.
  */
 public interface SmsConfigService {
-    
+
     /**
      * Get all SMS configurations.
      *
      * @return list of all SMS configurations
      */
     List<SmsConfigDto> findAll();
-    
+
     /**
      * Get an SMS configuration by its ID.
      *
@@ -25,7 +25,15 @@ public interface SmsConfigService {
      * @return the SMS configuration if found
      */
     Optional<SmsConfigDto> findById(Integer id);
-    
+
+    /**
+     * Find SMS configurations by société ID.
+     *
+     * @param societeId the société ID
+     * @return list of SMS configurations belonging to the société
+     */
+    List<SmsConfigDto> findBySocieteId(Integer societeId);
+
 
     /**
      * Create a new SMS configuration.
@@ -34,7 +42,7 @@ public interface SmsConfigService {
      * @return the created SMS configuration
      */
     SmsConfigDto create(CreateSmsConfigRequestDto createSmsConfigDto);
-    
+
     /**
      * Update an existing SMS configuration.
      *
@@ -43,7 +51,7 @@ public interface SmsConfigService {
      * @return the updated SMS configuration
      */
     SmsConfigDto update(Integer id, SmsConfigDto smsConfigDto);
-    
+
     /**
      * Delete an SMS configuration by its ID.
      *

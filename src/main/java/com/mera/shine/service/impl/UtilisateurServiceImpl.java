@@ -48,6 +48,22 @@ public  class UtilisateurServiceImpl implements UtilisateurService {
                 .map(utilisateurMapper::toDto);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<UtilisateurDto> findBySocieteId(Integer societeId) {
+        return utilisateurRepository.findBysocieteId(societeId).stream()
+                .map(utilisateurMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<UtilisateurDto> findBySiteId(Integer siteId) {
+        return utilisateurRepository.findBySiteId(siteId).stream()
+                .map(utilisateurMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     @Transactional

@@ -49,6 +49,18 @@ public class UniteMesureController {
     }
 
     /**
+     * GET /api/unites-mesure/by-site/{siteId} : Get unites mesure by site ID.
+     *
+     * @param societeId the Society ID
+     * @return the ResponseEntity with status 200 (OK) and the list of unites mesure in body
+     */
+    @GetMapping("/by-site/{societeId}")
+    public ResponseEntity<List<UniteMesureDto>> getUnitesMesureBySocieteId(@PathVariable Integer societeId) {
+        List<UniteMesureDto> unitesMesure = uniteMesureService.findBySocieteId(societeId);
+        return ResponseEntity.ok(unitesMesure);
+    }
+
+    /**
      * POST /api/unites-mesure : Create a new unite mesure.
      *
      * @param createUniteMesureDto the unite mesure to create

@@ -178,7 +178,7 @@ public  class SuperAdminServiceImpl implements SuperAdminService {
         // Create default site
         CreateSiteRequestDto defaultSite = new CreateSiteRequestDto(
             "Site Principal", 
-            "SITE01", 
+            "SITE03",
             "Site principal de la société", 
             "Ville principale", 
             "Pays principal", 
@@ -251,7 +251,7 @@ public  class SuperAdminServiceImpl implements SuperAdminService {
     private GroupDto createDefaultGroup(Integer societeId) {
         // Create default group
         CreateGroupRequestDto defaultGroup = new CreateGroupRequestDto(
-            "Administrateurs", 
+            "Admin",
             1, 
             1, 
             societeId
@@ -279,7 +279,7 @@ public  class SuperAdminServiceImpl implements SuperAdminService {
     private void createDefaultTier(Integer societeId) {
         // Create default tier (customer/supplier)
         CreateTierRequestDto defaultTier = new CreateTierRequestDto(
-            "TIER001", 
+            "TIER003",
             "Client Général", 
             null, 
             null, 
@@ -292,7 +292,7 @@ public  class SuperAdminServiceImpl implements SuperAdminService {
             null, 
             null, 
             null, 
-            null, 
+            null,
             societeId
         );
         tierService.create(defaultTier);
@@ -304,12 +304,12 @@ public  class SuperAdminServiceImpl implements SuperAdminService {
             "Administrateur", 
             null, 
             null, 
-            "admin", 
-            "admin123", 
-            "admin@company.com", 
-            "admin123", 
-            siteId, 
-            groupId, 
+            "admin03",
+            "admin1235",
+            "admin@company7.com",
+            "admin1235",
+            siteId,
+                groupId ,
             societeId
         );
         utilisateurService.create(defaultUser);

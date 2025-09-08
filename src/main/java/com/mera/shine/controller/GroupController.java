@@ -49,6 +49,18 @@ public class GroupController {
     }
 
     /**
+     * GET /api/groups/by-societe/{societeId} : Get groups by société ID.
+     *
+     * @param societeId the société ID
+     * @return the ResponseEntity with status 200 (OK) and the list of groups in body
+     */
+    @GetMapping("/by-societe/{societeId}")
+    public ResponseEntity<List<GroupDto>> getGroupsBySocieteId(@PathVariable Integer societeId) {
+        List<GroupDto> groups = groupService.findBySocieteId(societeId);
+        return ResponseEntity.ok(groups);
+    }
+
+    /**
      * POST /api/groups : Create a new group.
      *
      * @param createGroupDto the group to create

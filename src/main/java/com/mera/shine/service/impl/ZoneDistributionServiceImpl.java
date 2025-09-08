@@ -46,6 +46,14 @@ public  class ZoneDistributionServiceImpl implements ZoneDistributionService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<ZoneDistributionDto> findBySiteId(Integer siteId) {
+        return zoneDistributionRepository.findBySiteId(siteId).stream()
+                .map(zoneDistributionMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public ZoneDistributionDto create(CreateZoneDistributionRequestDto createZoneDistributionDto) {
         ZoneDistribution zoneDistribution = zoneDistributionMapper.createDtoToEntity(createZoneDistributionDto);

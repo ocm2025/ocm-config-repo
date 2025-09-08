@@ -10,14 +10,14 @@ import java.util.Optional;
  * Service interface for managing LigneConditionPaiement entities.
  */
 public interface LigneConditionPaiementService {
-    
+
     /**
      * Get all lignes condition paiement.
      *
      * @return list of all lignes condition paiement
      */
     List<LigneConditionPaiementDto> findAll();
-    
+
 
     /**
      * Get a ligne condition paiement by its ID.
@@ -26,7 +26,15 @@ public interface LigneConditionPaiementService {
      * @return the ligne condition paiement if found
      */
     Optional<LigneConditionPaiementDto> findById(Integer id);
-    
+
+    /**
+     * Find lignes condition paiement by société ID.
+     *
+     * @param societeId the société ID
+     * @return list of lignes condition paiement belonging to the société
+     */
+    List<LigneConditionPaiementDto> findBySocieteId(Integer societeId);
+
 
     /**
      * Create a new ligne condition paiement.
@@ -35,7 +43,7 @@ public interface LigneConditionPaiementService {
      * @return the created ligne condition paiement
      */
     LigneConditionPaiementDto create(CreateLigneConditionPaiementRequestDto createLigneConditionPaiementDto);
-    
+
     /**
      * Update an existing ligne condition paiement.
      *
@@ -44,7 +52,7 @@ public interface LigneConditionPaiementService {
      * @return the updated ligne condition paiement
      */
     LigneConditionPaiementDto update(Integer id, LigneConditionPaiementDto ligneConditionPaiementDto);
-    
+
     /**
      * Delete a ligne condition paiement by its ID.
      *

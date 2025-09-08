@@ -9,6 +9,7 @@ public record ParametreDto(
     String csLibelle,
     Byte csIsValid,
     String message,
+    String csvalue,
     Integer societeId,
     Integer siteId
 ) {

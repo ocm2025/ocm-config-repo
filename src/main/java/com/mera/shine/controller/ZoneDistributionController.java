@@ -49,6 +49,18 @@ public class ZoneDistributionController {
     }
 
     /**
+     * GET /api/zone-distributions/by-site/{siteId} : Get zone distributions by site ID.
+     *
+     * @param siteId the site ID
+     * @return the ResponseEntity with status 200 (OK) and the list of zone distributions in body
+     */
+    @GetMapping("/by-site/{siteId}")
+    public ResponseEntity<List<ZoneDistributionDto>> getZoneDistributionsBySiteId(@PathVariable Integer siteId) {
+        List<ZoneDistributionDto> zoneDistributions = zoneDistributionService.findBySiteId(siteId);
+        return ResponseEntity.ok(zoneDistributions);
+    }
+
+    /**
      * POST /api/zone-distributions : Create a new zone distribution.
      *
      * @param createZoneDistributionDto the zone distribution to create

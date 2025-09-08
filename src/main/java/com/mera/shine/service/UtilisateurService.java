@@ -11,7 +11,7 @@ import java.util.Optional;
  * Service interface for managing Utilisateur entities.
  */
 public interface UtilisateurService {
-    
+
     /**
      * Get all utilisateurs.
      *
@@ -28,13 +28,29 @@ public interface UtilisateurService {
     Optional<UtilisateurDto> findById(Integer id);
 
     /**
+     * Find utilisateurs by société ID.
+     *
+     * @param societeId the société ID
+     * @return list of utilisateurs belonging to the société
+     */
+    List<UtilisateurDto> findBySocieteId(Integer societeId);
+
+    /**
+     * Find utilisateurs by site ID.
+     *
+     * @param siteId the site ID
+     * @return list of utilisateurs belonging to the site
+     */
+    List<UtilisateurDto> findBySiteId(Integer siteId);
+
+    /**
      * Create a new utilisateur.
      *
      * @param createUtilisateurDto the utilisateur to create
      * @return the created utilisateur
      */
     UtilisateurDto create(CreateUtilisateurRequestDto createUtilisateurDto);
-    
+
     /**
      * Update an existing utilisateur.
      *

@@ -50,6 +50,30 @@ public class UtilisateurController {
     }
 
     /**
+     * GET /api/utilisateurs/by-societe : Get utilisateurs by société ID.
+     *
+     * @param societeId the société ID
+     * @return the ResponseEntity with status 200 (OK) and the list of utilisateurs in body
+     */
+    @GetMapping("/by-societe/{societeId}")
+    public ResponseEntity<List<UtilisateurDto>> getUtilisateursBySocieteId(@PathVariable Integer societeId) {
+        List<UtilisateurDto> utilisateurs = utilisateurService.findBySocieteId(societeId);
+        return ResponseEntity.ok(utilisateurs);
+    }
+
+    /**
+     * GET /api/utilisateurs/by-site : Get utilisateurs by site ID.
+     *
+     * @param siteId the site ID
+     * @return the ResponseEntity with status 200 (OK) and the list of utilisateurs in body
+     */
+    @GetMapping("/by-site/{siteId}")
+    public ResponseEntity<List<UtilisateurDto>> getUtilisateursBySiteId(@PathVariable Integer siteId) {
+        List<UtilisateurDto> utilisateurs = utilisateurService.findBySiteId(siteId);
+        return ResponseEntity.ok(utilisateurs);
+    }
+
+    /**
      * POST /api/utilisateurs : Create a new utilisateur.
      *
      * @param createUtilisateurDto the utilisateur to create

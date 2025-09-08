@@ -43,6 +43,13 @@ public class TaxeServiceImpl  implements  TaxeService {
                 .map(taxeMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
+    public List<TaxeDto> findBySocieteId(Integer societeId) {
+        return taxeRepository.findBySocieteId(societeId).stream()
+                .map(taxeMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 
     @Transactional
     public TaxeDto create(CreateTaxeRequestDto createTaxeDto) {

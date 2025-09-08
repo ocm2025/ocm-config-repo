@@ -44,6 +44,13 @@ public  class GroupServiceImpl implements GroupService {
                 .map(groupMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
+    public List<GroupDto> findBySocieteId(Integer societeId) {
+        return groupRepository.findBySocieteId(societeId).stream()
+                .map(groupMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     @Transactional
     public GroupDto create(CreateGroupRequestDto createGroupDto) {
         Group group = groupMapper.createDtoToEntity(createGroupDto);

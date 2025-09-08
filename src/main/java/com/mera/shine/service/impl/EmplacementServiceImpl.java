@@ -38,6 +38,20 @@ public  class EmplacementServiceImpl implements EmplacementService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<EmplacementDto> findBySocieteId(Integer societeId) {
+        return emplacementRepository.findBySocieteId(societeId).stream()
+                .map(emplacementMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<EmplacementDto> findBySiteId(Integer siteId) {
+        return emplacementRepository.findBySiteId(siteId).stream()
+                .map(emplacementMapper::toDto)
+                .collect(Collectors.toList());
+    }
 
 
     @Override

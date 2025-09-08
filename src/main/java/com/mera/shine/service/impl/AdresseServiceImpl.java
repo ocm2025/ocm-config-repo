@@ -46,6 +46,14 @@ public  class AdresseServiceImpl implements AdresseService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<AdresseDto> findByTiersId(Integer tiersId) {
+        return adresseRepository.findByTiersId(tiersId).stream()
+                .map(adresseMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public AdresseDto create(CreateAdresseRequestDto createAdresseDto) {
         Adresse adresse = adresseMapper.createDtoToEntity(createAdresseDto);

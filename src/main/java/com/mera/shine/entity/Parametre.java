@@ -28,6 +28,10 @@ public class Parametre {
     @Column(name = "cs_is_valid")
     private Byte csIsValid;
 
+    @Size(max = 100)
+    @Column(name = "cs_value")
+    private String csvalue;
+
     @Size(max = 255)
     @Column(name = "message")
     private String message;

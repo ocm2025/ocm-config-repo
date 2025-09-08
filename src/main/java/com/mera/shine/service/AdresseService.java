@@ -10,7 +10,7 @@ import java.util.Optional;
  * Service interface for managing Adresse entities.
  */
 public interface AdresseService {
-    
+
     /**
      * Get all addresses.
      *
@@ -26,7 +26,15 @@ public interface AdresseService {
      * @return the address if found
      */
     Optional<AdresseDto> findById(Integer id);
-    
+
+    /**
+     * Find addresses by tiers ID.
+     *
+     * @param tiersId the tiers ID
+     * @return list of addresses belonging to the tiers
+     */
+    List<AdresseDto> findByTiersId(Integer tiersId);
+
     /**
      * Create a new address.
      *
@@ -34,7 +42,7 @@ public interface AdresseService {
      * @return the created address
      */
     AdresseDto create(CreateAdresseRequestDto createAdresseDto);
-    
+
     /**
      * Update an existing address.
      *
@@ -43,7 +51,7 @@ public interface AdresseService {
      * @return the updated address
      */
     AdresseDto update(Integer id, AdresseDto adresseDto);
-    
+
     /**
      * Delete an address by its ID.
      *

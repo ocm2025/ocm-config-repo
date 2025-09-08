@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmailConfigRepository extends JpaRepository<EmailConfig, Integer> {
 
+    EmailConfig findBySocieteId(Integer societeId);
 }

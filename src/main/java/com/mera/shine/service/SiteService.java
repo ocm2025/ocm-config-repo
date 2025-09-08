@@ -10,7 +10,7 @@ import java.util.Optional;
  * Service interface for managing Site entities.
  */
 public interface SiteService {
-    
+
     /**
      * Get all sites.
      *
@@ -18,6 +18,7 @@ public interface SiteService {
      */
     List<SiteDto> findAll();
 
+    List<SiteDto> findBySociete(Integer societeId);
     /**
      * Get a site by its ID.
      *
@@ -25,7 +26,7 @@ public interface SiteService {
      * @return the site if found
      */
     Optional<SiteDto> findById(Integer id);
-    
+
 
     /**
      * Create a new site.
@@ -34,7 +35,7 @@ public interface SiteService {
      * @return the created site
      */
     SiteDto create(CreateSiteRequestDto createSiteDto);
-    
+
     /**
      * Update an existing site.
      *
@@ -43,7 +44,7 @@ public interface SiteService {
      * @return the updated site
      */
     SiteDto update(Integer id, SiteDto siteDto);
-    
+
     /**
      * Delete a site by its ID.
      *

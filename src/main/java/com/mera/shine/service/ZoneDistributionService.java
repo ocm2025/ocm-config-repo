@@ -10,14 +10,14 @@ import java.util.Optional;
  * Service interface for managing ZoneDistribution entities.
  */
 public interface ZoneDistributionService {
-    
+
     /**
      * Get all zone distributions.
      *
      * @return list of all zone distributions
      */
     List<ZoneDistributionDto> findAll();
-    
+
 
     /**
      * Get a zone distribution by its ID.
@@ -27,6 +27,14 @@ public interface ZoneDistributionService {
      */
     Optional<ZoneDistributionDto> findById(Integer id);
 
+    /**
+     * Find zone distributions by site ID.
+     *
+     * @param siteId the site ID
+     * @return list of zone distributions belonging to the site
+     */
+    List<ZoneDistributionDto> findBySiteId(Integer siteId);
+
 
     /**
      * Create a new zone distribution.
@@ -35,7 +43,7 @@ public interface ZoneDistributionService {
      * @return the created zone distribution
      */
     ZoneDistributionDto create(CreateZoneDistributionRequestDto createZoneDistributionDto);
-    
+
     /**
      * Update an existing zone distribution.
      *
@@ -44,7 +52,7 @@ public interface ZoneDistributionService {
      * @return the updated zone distribution
      */
     ZoneDistributionDto update(Integer id, ZoneDistributionDto zoneDistributionDto);
-    
+
     /**
      * Delete a zone distribution by its ID.
      *

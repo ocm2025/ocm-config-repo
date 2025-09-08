@@ -13,4 +13,5 @@ import java.util.Optional;
 @Repository
 public interface UniteMesureRepository extends JpaRepository<UniteMesure, Integer> {
 
+    List<UniteMesure> findBySocieteId(Integer societeId);
 }

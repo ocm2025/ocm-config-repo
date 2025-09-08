@@ -49,6 +49,18 @@ public class EmailConfigController {
     }
 
     /**
+     * GET /api/email-configs/by-societe/{societeId} : Get email configuration by société ID.
+     *
+     * @param societeId the société ID
+     * @return the ResponseEntity with status 200 (OK) and with body the email configuration, or with status 404 (Not Found)
+     */
+    @GetMapping("/by-societe/{societeId}")
+    public ResponseEntity<EmailConfigDto> getEmailConfigBySocieteId(@PathVariable Integer societeId) {
+        EmailConfigDto emailConfig = emailConfigService.findBySocieteId(societeId);
+        return emailConfig != null ? ResponseEntity.ok(emailConfig) : ResponseEntity.notFound().build();
+    }
+
+    /**
      * POST /api/email-configs : Create a new email configuration.
      *
      * @param createEmailConfigDto the email configuration to create

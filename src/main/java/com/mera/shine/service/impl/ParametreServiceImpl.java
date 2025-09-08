@@ -39,11 +39,20 @@ public class ParametreServiceImpl implements ParametreService {
     }
 
 
+
     @Override
     @Transactional(readOnly = true)
     public Optional<ParametreDto> findById(Integer id) {
         return parametreRepository.findById(id)
                 .map(parametreMapper::toDto);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ParametreDto> findBysocieteId(Integer societeId) {
+        return parametreRepository.findBysocieteId(societeId).stream()
+                .map(parametreMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override

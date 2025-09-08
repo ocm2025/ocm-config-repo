@@ -47,6 +47,13 @@ public class UniteMesureServiceImpl implements UniteMesureService {
                 .map(uniteMesureMapper::toDto);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<UniteMesureDto> findBySocieteId(Integer societeId) {
+        return uniteMesureRepository.findBySocieteId(societeId).stream()
+                .map(uniteMesureMapper::toDto)
+                .collect(Collectors.toList());
+    }
 
 
     @Override

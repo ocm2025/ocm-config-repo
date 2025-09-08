@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface AdresseRepository extends JpaRepository<Adresse, Integer> {
     
-
+    List<Adresse> findByTiersId(Integer tiersId);
 }

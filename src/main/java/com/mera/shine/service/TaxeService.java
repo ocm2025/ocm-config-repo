@@ -10,7 +10,7 @@ import java.util.Optional;
  * Service interface for managing Taxe entities.
  */
 public interface TaxeService {
-    
+
     /**
      * Get all taxes.
      *
@@ -26,7 +26,15 @@ public interface TaxeService {
      * @return the tax if found
      */
     Optional<TaxeDto> findById(Integer id);
-    
+
+    /**
+     * Find taxes by site ID.
+     *
+     * @param societeId the site ID
+     * @return list of taxes belonging to the site
+     */
+    List<TaxeDto> findBySocieteId(Integer societeId);
+
 
     /**
      * Create a new tax.
@@ -35,7 +43,7 @@ public interface TaxeService {
      * @return the created tax
      */
     TaxeDto create(CreateTaxeRequestDto createTaxeDto);
-    
+
     /**
      * Update an existing tax.
      *
@@ -44,7 +52,7 @@ public interface TaxeService {
      * @return the updated tax
      */
     TaxeDto update(Integer id, TaxeDto taxeDto);
-    
+
     /**
      * Delete a tax by its ID.
      *

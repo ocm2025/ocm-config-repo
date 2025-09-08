@@ -18,6 +18,9 @@ public record CreateParametreRequestDto(
     
     @Size(max = 255)
     String message,
+
+    @Size(max = 100)
+    String csvalue,
     
     Integer societeId,
     

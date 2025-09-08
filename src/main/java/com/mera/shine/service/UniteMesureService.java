@@ -10,7 +10,7 @@ import java.util.Optional;
  * Service interface for managing UniteMesure entities.
  */
 public interface UniteMesureService {
-    
+
     /**
      * Get all unites mesure.
      *
@@ -27,13 +27,25 @@ public interface UniteMesureService {
     Optional<UniteMesureDto> findById(Integer id);
 
     /**
+     * Find unites mesure by société ID.
+     *
+     * @param societeId the société ID
+     * @return list of unites mesure belonging to the société
+     */
+    List<UniteMesureDto> findBySocieteId(Integer societeId);
+
+
+
+
+
+    /**
      * Create a new unite mesure.
      *
      * @param createUniteMesureDto the unite mesure to create
      * @return the created unite mesure
      */
     UniteMesureDto create(CreateUniteMesureRequestDto createUniteMesureDto);
-    
+
     /**
      * Update an existing unite mesure.
      *
@@ -42,7 +54,7 @@ public interface UniteMesureService {
      * @return the updated unite mesure
      */
     UniteMesureDto update(Integer id, UniteMesureDto uniteMesureDto);
-    
+
     /**
      * Delete a unite mesure by its ID.
      *

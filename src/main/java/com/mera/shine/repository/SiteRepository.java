@@ -13,4 +13,11 @@ import java.util.Optional;
 @Repository
 public interface SiteRepository extends JpaRepository<Site, Integer> {
 
+    /**
+     * Find all sites by société ID.
+     *
+     * @param societeId the ID of the société
+     * @return list of sites belonging to the société
+     */
+    List<Site> findBySocieteId(Integer societeId);
 }

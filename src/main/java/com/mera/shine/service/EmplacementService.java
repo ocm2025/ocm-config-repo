@@ -10,15 +10,17 @@ import java.util.Optional;
  * Service interface for managing Emplacement entities.
  */
 public interface EmplacementService {
-    
+
     /**
      * Get all emplacements.
      *
      * @return list of all emplacements
      */
     List<EmplacementDto> findAll();
-    
 
+    List<EmplacementDto> findBySocieteId(Integer societeId);
+
+    List<EmplacementDto> findBySiteId(Integer siteId);
     /**
      * Get an emplacement by its ID.
      *
@@ -26,7 +28,7 @@ public interface EmplacementService {
      * @return the emplacement if found
      */
     Optional<EmplacementDto> findById(Integer id);
-    
+
 
     /**
      * Create a new emplacement.
@@ -35,7 +37,7 @@ public interface EmplacementService {
      * @return the created emplacement
      */
     EmplacementDto create(CreateEmplacementRequestDto createEmplacementDto);
-    
+
     /**
      * Update an existing emplacement.
      *
@@ -44,7 +46,7 @@ public interface EmplacementService {
      * @return the updated emplacement
      */
     EmplacementDto update(Integer id, EmplacementDto emplacementDto);
-    
+
     /**
      * Delete an emplacement by its ID.
      *

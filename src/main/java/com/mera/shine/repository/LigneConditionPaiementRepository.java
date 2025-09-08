@@ -12,5 +12,6 @@ import java.util.Optional;
  */
 @Repository
 public interface LigneConditionPaiementRepository extends JpaRepository<LigneConditionPaiement, Integer> {
-    
+
+    List<LigneConditionPaiement> findBySocieteId(Integer societeId);
 }

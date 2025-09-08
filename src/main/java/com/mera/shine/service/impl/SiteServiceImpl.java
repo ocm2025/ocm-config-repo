@@ -40,6 +40,14 @@ public  class SiteServiceImpl implements SiteService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<SiteDto> findBySociete(Integer societeId) {
+        return siteRepository.findBySocieteId(societeId).stream()
+                .map(siteMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Optional<SiteDto> findById(Integer id) {
         return siteRepository.findById(id)
                 .map(siteMapper::toDto);

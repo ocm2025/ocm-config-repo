@@ -45,6 +45,21 @@ public  class TierServiceImpl implements TierService {
                 .map(tierMapper::toDto);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<TierDto> findByClTypeAndSocieteId(Integer clType, Integer societeId) {
+        return tierRepository.findByClTypeAndSocieteId(clType, societeId).stream()
+                .map(tierMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<TierDto> findByClTypeAndSiteId(Integer clType, Integer siteId) {
+        return tierRepository.findByClTypeAndSiteId(clType, siteId).stream()
+                .map(tierMapper::toDto)
+                .collect(Collectors.toList());
+    }
 
     @Override
     @Transactional

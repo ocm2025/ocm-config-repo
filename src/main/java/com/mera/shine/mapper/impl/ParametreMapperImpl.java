@@ -35,6 +35,7 @@ public class ParametreMapperImpl implements ParametreMapper {
                 entity.getCsCode(),
                 entity.getCsLibelle(),
                 entity.getCsIsValid(),
+                entity.getCsvalue(),
                 entity.getMessage(),
                 societeId,
                 siteId
@@ -53,6 +54,7 @@ public class ParametreMapperImpl implements ParametreMapper {
         parametre.setCsLibelle(dto.csLibelle());
         parametre.setCsIsValid(dto.csIsValid());
         parametre.setMessage(dto.message());
+        parametre.setCsvalue(dto.csvalue());
 
         if (dto.societeId() != null) {
             Societe societe = new Societe();
@@ -80,6 +82,7 @@ public class ParametreMapperImpl implements ParametreMapper {
         parametre.setCsLibelle(createDto.csLibelle());
         parametre.setCsIsValid(createDto.csIsValid());
         parametre.setMessage(createDto.message());
+        parametre.setCsvalue(createDto.csvalue());
 
         if (createDto.societeId() != null) {
             Societe societe = new Societe();
@@ -106,6 +109,7 @@ public class ParametreMapperImpl implements ParametreMapper {
         entity.setCsLibelle(dto.csLibelle());
         entity.setCsIsValid(dto.csIsValid());
         entity.setMessage(dto.message());
+        entity.setCsvalue(dto.csvalue());
 
         if (dto.societeId() != null) {
             if (entity.getSociete() == null || !entity.getSociete().getId().equals(dto.societeId())) {

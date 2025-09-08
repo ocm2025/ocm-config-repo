@@ -10,7 +10,7 @@ import java.util.Optional;
  * Service interface for managing Parametre entities.
  */
 public interface ParametreService {
-    
+
     /**
      * Get all parameters.
      *
@@ -26,6 +26,14 @@ public interface ParametreService {
      */
     Optional<ParametreDto> findById(Integer id);
 
+    /**
+     * Find parameters by société ID.
+     *
+     * @param societeId the société ID
+     * @return list of parameters belonging to the société
+     */
+    List<ParametreDto> findBysocieteId(Integer societeId);
+
 
     /**
      * Create a new parameter.
@@ -34,7 +42,7 @@ public interface ParametreService {
      * @return the created parameter
      */
     ParametreDto create(CreateParametreRequestDto createParametreDto);
-    
+
     /**
      * Update an existing parameter.
      *
@@ -43,7 +51,7 @@ public interface ParametreService {
      * @return the updated parameter
      */
     ParametreDto update(Integer id, ParametreDto parametreDto);
-    
+
     /**
      * Delete a parameter by its ID.
      *

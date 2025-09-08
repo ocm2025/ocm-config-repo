@@ -10,14 +10,14 @@ import java.util.Optional;
  * Service interface for managing EmailConfig entities.
  */
 public interface EmailConfigService {
-    
+
     /**
      * Get all email configurations.
      *
      * @return list of all email configurations
      */
     List<EmailConfigDto> findAll();
-    
+
     /**
      * Get an email configuration by its ID.
      *
@@ -25,7 +25,15 @@ public interface EmailConfigService {
      * @return the email configuration if found
      */
     Optional<EmailConfigDto> findById(Integer id);
-    
+
+    /**
+     * Find email configuration by société ID.
+     *
+     * @param societeId the société ID
+     * @return the email configuration for the société
+     */
+    EmailConfigDto findBySocieteId(Integer societeId);
+
 
     /**
      * Create a new email configuration.
@@ -34,7 +42,7 @@ public interface EmailConfigService {
      * @return the created email configuration
      */
     EmailConfigDto create(CreateEmailConfigRequestDto createEmailConfigDto);
-    
+
     /**
      * Update an existing email configuration.
      *
@@ -43,7 +51,7 @@ public interface EmailConfigService {
      * @return the updated email configuration
      */
     EmailConfigDto update(Integer id, EmailConfigDto emailConfigDto);
-    
+
     /**
      * Delete an email configuration by its ID.
      *

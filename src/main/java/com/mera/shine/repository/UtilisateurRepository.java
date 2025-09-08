@@ -13,4 +13,8 @@ import java.util.Optional;
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
 
+    List<Utilisateur> findBysocieteId(Integer id);
+
+    List<Utilisateur> findBySiteId(Integer id);
+
 }

@@ -47,6 +47,14 @@ public  class ModePaiementServiceImpl implements ModePaiementService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<ModePaiementDto> findBySocieteId(Integer societeId) {
+        return modePaiementRepository.findBySocieteId(societeId).stream()
+                .map(modePaiementMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public ModePaiementDto create(CreateModePaiementRequestDto createModePaiementDto) {
         ModePaiement modePaiement = modePaiementMapper.createDtoToEntity(createModePaiementDto);

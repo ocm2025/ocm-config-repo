@@ -13,4 +13,5 @@ import java.util.Optional;
 @Repository
 public interface TaxeRepository extends JpaRepository<Taxe, Integer> {
 
+    List<Taxe> findBySocieteId(Integer societeId);
 }
